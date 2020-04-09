@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import NavBar from './NavBar'
 import { connect } from 'react-redux'
-import ProductCard from './productCard'
+import Cartcard from './Cartcard'
+import {bindActionCreators} from 'redux'
+import addToCart from '../Redux/action_creators'
+import { Link } from 'react-router-dom'
 
 
 class Cart extends React.Component{
@@ -13,19 +16,28 @@ class Cart extends React.Component{
     }
         
     render(){
-        console.log(this.state)
-        return(
-            <div> 
-                <NavBar />
-                <div className="container-fluid">
-                        <div className="row">
-                            {this.state.CartItems.map(
-                                (product) => <ProductCard key = {product.pid} {...product} onClick = {() => this.props.addtoCart(product)} />
-                            )}
+        
+        if(this.state.CartItems===null || this.state.CartItems.length === 0){
+            return <Fragment><NavBar /> <div className="alert alert-danger">Cart is Empty please add Something</div></Fragment>
+        }
+        else{
+            return(
+                <div> 
+                    <NavBar />
+                    <div className="container-fluid">
+                            <div className="row">
+                                
+                                {this.state.CartItems.map(
+                                    (product) => <Cartcard key = {product.pid} {...product} onClick = {() => this.props.addtoCart(product) }/>
+                                )}
+                            </div>
                         </div>
-                    </div>
-            </div>
-        )
+    
+                    <button className="btn btn-warning"><Link to="confirmation">Confirm Order</Link></button>
+                </div>
+            )
+        }
+        
     }
     
 }
@@ -35,5 +47,8 @@ const mapStatetoProps = (state) => {
         cart : state.Cart
     }
 }
+const mapDispatchtoProps = (dispatch) => {
+    return bindActionCreators({addtoCart : addToCart},dispatch)
+}
 
-export default connect(mapStatetoProps)(Cart)
+export default connect(mapStatetoProps,mapDispatchtoProps)(Cart)

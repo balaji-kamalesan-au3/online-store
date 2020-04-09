@@ -39,8 +39,7 @@ class Product extends React.Component{
                         </div>
                     </div>
 
-                </Fragment>
-                
+                </Fragment>    
             )
 
             
