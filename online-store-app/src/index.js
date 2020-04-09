@@ -9,10 +9,9 @@ import {Provider} from 'react-redux'
 import onlineStoreReducer from './Redux/reducers'
 
 let store = createStore(onlineStoreReducer)
-
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter >
         <Provider store = {store}>
            <App />
         </Provider>        

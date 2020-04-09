@@ -8,7 +8,7 @@ const ProductCard = (props) => {
             <h5 className = "card-title">{props.Name}</h5>
             <h6>Price : {props.Price}</h6>
                 <span className="row">
-                    <button className="btn btn-primary col-sm-6">View </button>
+                    <button className="btn btn-primary col-sm-6" onClick={props.onView}>View </button>
                     <button className="btn btn-warning col-sm-6" onClick={props.onClick} >Add to Cart</button>
                 </span>
             </div>

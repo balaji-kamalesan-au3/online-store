@@ -6,7 +6,7 @@ const NavBar = (props) => {
     return (
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
-        <a className="navbar-brand" href="/">OnlineStore</a>
+        <Link className="navbar-brand" to="/">OnlineStore</Link>
         
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
@@ -19,6 +19,9 @@ const NavBar = (props) => {
                     <Link to="/cart" className="nav-link" > Cart </Link>
                 </li>
             
+                <li className="nav-item">
+                    <Link to="/product" className="nav-link" > Products </Link>
+                </li>
             
             </ul>
         </div>

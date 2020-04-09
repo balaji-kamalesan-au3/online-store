@@ -24,16 +24,20 @@ class Cart extends React.Component{
             return(
                 <div> 
                     <NavBar />
-                    <div className="container-fluid">
+                    <div className="container">
                             <div className="row">
                                 
                                 {this.state.CartItems.map(
                                     (product) => <Cartcard key = {product.pid} {...product} onClick = {() => this.props.addtoCart(product) }/>
                                 )}
                             </div>
+                            <div className="row">
+                            <Link to="confirmation" className="btn btn-success col-md-offset-3 col-md-6  text-center">Confirm Order</Link>
+                            </div>
+                         
                         </div>
-    
-                    <button className="btn btn-warning"><Link to="confirmation">Confirm Order</Link></button>
+                                    
+                    
                 </div>
             )
         }
