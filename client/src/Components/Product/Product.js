@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 import {connect} from 'react-redux'
-import NavBar from './NavBar'
+import NavBar from './NavBar';
+import {getProducts} from "../../Redux/actions/productActions"
+import ProductCard from './productCard';
 
 
  
@@ -8,54 +10,61 @@ import NavBar from './NavBar'
 class Product extends React.Component{
     constructor(props){
         super(props)
-        this.state = {
-            
+        this.state ={
+            loading : true
         }
     }
 
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.getProducts(null)
+    }
+
+    generateCard = () => {
+        {this.props.data.map(
+            (product) => {return <ProductCard product={product} />}
+        )}
+    }
   
-  
+    componentDidMount() {
+        this.props.getProducts(null);
+        if(this.props.products.data){
+            this.setState({...this.state,loading : false},() => {console.log(this.props)})
+        }
+    }
+
  
 
     render(){
         console.log(this.props)
-        if(this.state.laptops !== null) {
+
+        if(this.state.loading){
+            return(
+                <div>loading</div>
+            )
+        }
+        else {
             return (
                 <Fragment>
                     <div className="container-fluid">
                         <div className="row">
-                            {/* {this.state.laptops.map(
-                                (product) => <ProductCard 
-                                key = {product.pid} {...product} 
-                                onClick = {() => this.props.addtoCart(product)} 
-                                onView = {() =>{this.props.viewProduct(product); this.props.history.push("/productdetails")}}/>
-                            )} */}
-                            Product Page
+                            <button className="btn btn-primary" onClick={this.onSubmit}>Get Products</button>
+                            {this.generateCard()}
                         </div>
                     </div> 
 
                 </Fragment>    
             )
-
+        }
             
-        }
-        else {
-           return (
-             <div> 
-                 <NavBar />
-                 Loading... 
-            </div>
-           )
-        }
-
-       
     }
 
 }
 
 const mapStatetoProps = state => ({
-    state
+    errors : state.errors,
+    products : state.products
 })
 
 
-export default  connect(mapStatetoProps)(Product)
+export default  connect(mapStatetoProps,{getProducts})(Product)
