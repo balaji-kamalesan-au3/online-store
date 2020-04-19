@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
-import clearCart from '../Redux/clear_cart'
 import NavBar from './NavBar'
 
 class Confirmation extends React.Component{
@@ -49,11 +47,8 @@ class Confirmation extends React.Component{
 
 const mapStatetoProps = (state) => {
     return {
-        cart : state.Cart
+        state
     }
 }
-const mapDispatchtoProps = (dispatch) => {
-    return bindActionCreators({clearCart : clearCart},dispatch)
-}
 
-export default connect(mapStatetoProps,mapDispatchtoProps)(Confirmation)
+export default connect(mapStatetoProps)(Confirmation)

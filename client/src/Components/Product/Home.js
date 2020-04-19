@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
         
         return(
             <Fragment>
-                 <NavBar />
+                 
                 <div className="container-fluid jumbotron"> 
                     <h1 className="display-4 row">Welcome to Online Store !!</h1>
                     <p className="lead">

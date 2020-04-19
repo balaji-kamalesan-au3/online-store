@@ -1,7 +1,18 @@
-const actions = {
-    ADD_TO_CART : "ADD_TO_CART",
-    CLEAR_CART : "CLEAR_CART",
-    ADD_CURRENT_PRODUCT : "ADD_CURRENT_PRODUCT"
-}
+import axios from "axios";
+import { SET_PRODUCTS } from "./types";
 
-export default actions
+export const getProducts = keyword => dispatch => {
+    axios
+        .post("/product/getProduct/null")
+        .then((products) => {
+
+        })
+} 
+
+
+export const setProducts = (products) => {
+    return {
+        type : SET_PRODUCTS,
+        payload : products
+    }
+}

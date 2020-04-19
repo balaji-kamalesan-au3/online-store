@@ -1,8 +1,7 @@
 import React from 'react'
 import NavBar from './NavBar'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import addToCart from '../Redux/action_creators'
+
 import { Link } from 'react-router-dom'
 
 const ProductPage = (props) => {
@@ -61,14 +60,9 @@ const ProductPage = (props) => {
 
 const mapStatetoProps = (state) => {
     return {
-        product : state.CurrentProduct
+        state
     }
 }
 
-const mapDispatchtoProps = (dispatch) => {
-    return bindActionCreators ({
-        addtoCart : addToCart
-    },dispatch)
-}
 
-export default connect(mapStatetoProps,mapDispatchtoProps)(ProductPage)
+export default connect(mapStatetoProps)(ProductPage)

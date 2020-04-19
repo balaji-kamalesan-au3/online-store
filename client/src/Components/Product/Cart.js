@@ -2,10 +2,7 @@ import React, { Fragment } from 'react'
 import NavBar from './NavBar'
 import { connect } from 'react-redux'
 import Cartcard from './Cartcard'
-import {bindActionCreators} from 'redux'
-import addToCart from '../Redux/action_creators'
 import { Link } from 'react-router-dom'
-
 
 class Cart extends React.Component{
     constructor(props){
@@ -48,11 +45,8 @@ class Cart extends React.Component{
 
 const mapStatetoProps = (state) => {
     return {
-        cart : state.Cart
+        state
     }
 }
-const mapDispatchtoProps = (dispatch) => {
-    return bindActionCreators({addtoCart : addToCart},dispatch)
-}
 
-export default connect(mapStatetoProps,mapDispatchtoProps)(Cart)
+export default connect(mapStatetoProps)(Cart)
