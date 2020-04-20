@@ -33,7 +33,7 @@ Instructions to run the app
     Setup Node (Version) >= 8.10 and npm (Version) >= 5.6 on your machine
         1. Clone the Repository
             To clone run the following command
-            git clone https://github.com/balaji-kamalesan-au3/hashtag-assignment.git
+            git clone https://github.com/balaji-kamalesan-au3/online-store.git
         2.Navigate inside the cloned folder
             run the following commands:
                 cd server
