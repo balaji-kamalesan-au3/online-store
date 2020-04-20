@@ -2,10 +2,12 @@ A Small functional e-commerce web app using React
 The goal of the Simple Online Store is to give your users the capability of selecting a product to purchase, viewing purchase information, adding it to an online shopping cart, and finally, actually purchasing the products in the shopping 
 
 Technologies Used:
+
     1.Front-end =>  React, Redux , Redux Thunk, Axios
     2.Backend => Nodejs, Express, Bcrypt, Jwt, Validator,mongoose
   
  Requirements 
+ 
     1.Latest versions of Node and NPM,
     2.MongoDB Installed in local Machine
   
