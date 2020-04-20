@@ -1,5 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import {logoutUser} from "../../Redux/actions/authActions"
 
 const NavBar = (props) => {
     console.log(props)
@@ -8,7 +10,7 @@ const NavBar = (props) => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
         <Link className="navbar-brand" to="/">OnlineStore</Link>
         
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div id="navbarNav">
             <ul className="navbar-nav">
 
                 <li className="nav-item">
@@ -22,7 +24,9 @@ const NavBar = (props) => {
                 <li className="nav-item">
                     <Link to="/product" className="nav-link" > Products </Link>
                 </li>
-            
+                <li>
+                    <button className="nav-link" style={{backgroundColor:"transparent",border: "none"}}onClick={() =>props.logoutUser(props.history)} >Logout</button>
+                </li>
             </ul>
         </div>
         </nav>
@@ -31,4 +35,4 @@ const NavBar = (props) => {
 
 
 
-export default NavBar
+export default connect(null,{logoutUser})(NavBar)

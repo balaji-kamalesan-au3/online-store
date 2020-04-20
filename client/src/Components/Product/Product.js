@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import {connect} from 'react-redux'
 import {getProducts} from "../../Redux/actions/productActions"
+import {addToCart} from "../../Redux/actions/cartActions"
 import ProductCard from './productCard';
 import isEmpty from 'is-empty'
-import RadioButton from '../Inputs/RadioButtons';
+
 
 
  
@@ -22,9 +23,15 @@ class Product extends React.Component{
         this.props.getProducts(null)
     }
 
+
+    onAddtoCart = (product) => {
+        console.log("fired")
+        this.props.addToCart(product,this.props.cart.cart)
+    }
+
     generateCard = () => {
       return(  this.props.products.data.map(
-            (product) =>  <ProductCard key={product["pid"]} product={product} />)
+      (product) => {return  <ProductCard key={product["pid"]} product={product} addCart ={() => this.onAddtoCart(product)}/>})
             )
    
     }
@@ -34,6 +41,10 @@ class Product extends React.Component{
       }
   
     componentDidMount() {
+        if (!this.props.auth.isAuthenticated){
+            this.props.history.push("/login");
+        }
+
         this.props.getProducts(null);
 
     }
@@ -89,8 +100,10 @@ class Product extends React.Component{
 
 const mapStatetoProps = state => ({
     errors : state.errors,
-    products : state.products
+    auth: state.auth,
+    products : state.products,
+    cart : state.cart
 })
 
 
-export default  connect(mapStatetoProps,{getProducts})(Product)
+export default  connect(mapStatetoProps,{getProducts, addToCart})(Product)

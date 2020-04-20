@@ -16,19 +16,18 @@ import { Link } from 'react-router-dom'
                 <h1 className="display-4">Welcome to Online Store !!</h1>
                     <p className="lead row">
                         About  : <br />
-                        A Small functional e-commerce web app using React The goal of the Simple Online Store is to give your users the capability of selecting a product to purchase, viewing purchase information, adding it to an online shopping cart, and finally, actually purchasing the products in the shopping cart.
+                        A Small functional e-commerce web app using React The goal of the Simple Online Store is to give your users the capability of selecting a product to purchase, viewing purchase information, adding it to an online shopping cart. 
                         <br />
-                        Technologies Used : ReactJS, Redux, Bootstrap
+                        Technologies Used : ReactJS, Redux,Redux-Thunk, Bootstrap
                         <br />
                         <br />
-                        <div className="col-lg-6">
+                    </p>
+                    <div className="col-lg-6">
                         <Link to="/signup" className="btn btn-warning btn-lg btn-block " >New User? Register here</Link>
                         </div>
                         <div className="col-lg-6">
                         <Link to="/login" className="btn btn-warning btn-lg btn-block " >Have an Account? Login here </Link>
                         </div>
-                        
-                    </p>
                 </div>
                    
                 </div>
