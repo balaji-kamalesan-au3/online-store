@@ -36,16 +36,20 @@ Instructions to run the app
         1. Clone the Repository
             To clone run the following command
             git clone https://github.com/balaji-kamalesan-au3/online-store.git
-        2.Navigate inside the cloned folder
-            run the following commands:
-                cd server
+        2.Navigate to the folder where you have cloned (Eg : D:\React Apps)
+            Run the following commands
+                cd online-store/
+                cd server/
                 npm install
                 npm run client-install
         3. Once all the installation are complete
-            run the following
+            Run the following
                 npm run dev
+            
+            This will run the both frontend and Backend for you 
 
     If you have any problems while installing please reach out to me through +91 8838159833
+    Happy Coding :)
 
 
 Created By:
