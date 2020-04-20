@@ -1,8 +1,9 @@
 import React from 'react'
 
+
 const ProductCard = (props) => {
     return(
-        <div className="card col-lg-3 ">
+        <div className="card col-lg-3">
             {/* <img src = {props.Image} alt={`${props.Name} Image`} width="300px" height="300px" /> */}
             <div className = "card-body container-fluid">
             <h5 className = "card-title">{props.product["product_name"]}</h5>

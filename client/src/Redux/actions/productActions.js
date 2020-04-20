@@ -13,11 +13,15 @@ export const getProducts = (query) => dispatch => {
         console.log(products);
         dispatch(setProduct(products));
     }) 
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
+    .catch(err =>{
+      console.log(err);
+      if(err.response !== undefined){
+               dispatch({
+                type: GET_ERRORS,
+                payload: err.response
+               })
+      }
+    }
     );
 };
 

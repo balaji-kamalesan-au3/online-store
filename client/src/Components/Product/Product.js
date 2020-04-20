@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import {connect} from 'react-redux'
-import NavBar from './NavBar';
 import {getProducts} from "../../Redux/actions/productActions"
 import ProductCard from './productCard';
+import isEmpty from 'is-empty'
+import RadioButton from '../Inputs/RadioButtons';
 
 
  
@@ -11,7 +12,8 @@ class Product extends React.Component{
     constructor(props){
         super(props)
         this.state ={
-            loading : true
+            loading : true,
+            query : "",
         }
     }
 
@@ -21,16 +23,19 @@ class Product extends React.Component{
     }
 
     generateCard = () => {
-        {this.props.data.map(
-            (product) => {return <ProductCard product={product} />}
-        )}
+      return(  this.props.products.data.map(
+            (product) =>  <ProductCard key={product["pid"]} product={product} />)
+            )
+   
     }
+    
+    onCategoryChange = (e) => {
+        this.props.getProducts(e.target.value)
+      }
   
     componentDidMount() {
         this.props.getProducts(null);
-        if(this.props.products.data){
-            this.setState({...this.state,loading : false},() => {console.log(this.props)})
-        }
+
     }
 
  
@@ -38,9 +43,9 @@ class Product extends React.Component{
     render(){
         console.log(this.props)
 
-        if(this.state.loading){
+        if(isEmpty(this.props.products)){
             return(
-                <div>loading</div>
+                <div>Products are empt</div>
             )
         }
         else {
@@ -48,8 +53,29 @@ class Product extends React.Component{
                 <Fragment>
                     <div className="container-fluid">
                         <div className="row">
-                            <button className="btn btn-primary" onClick={this.onSubmit}>Get Products</button>
+                            <div className="col-lg-2 container-fluid">
+                                <div className="row">
+                                    <div className="col-sm-12" style={{textAlign: "center", padding: "10px 0"}}>
+                                        <h4>Popular Categories</h4>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <button className="btn btn-info col-lg-12" value="clothing" onClick={this.onCategoryChange}>Clothing</button>
+                                </div>
+                                <div className="row">
+                                    <button className="btn btn-info col-lg-12" value="mobile" onClick={this.onCategoryChange}>Mobile</button>
+                                </div>
+                                <div className="row">
+                                    <button className="btn btn-info col-lg-12" value="furniture" onClick={this.onCategoryChange}>Furniture</button>
+                                </div>
+                                <div className="row">
+                                    <button className="btn btn-info col-lg-12" value="footwear" onClick={this.onCategoryChange}>Footwear</button>
+                                </div>
+                            </div>
+                            <div className="col-lg-10 row">
                             {this.generateCard()}
+                            </div>
+                            
                         </div>
                     </div> 
 
