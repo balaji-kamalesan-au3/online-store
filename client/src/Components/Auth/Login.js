@@ -62,12 +62,13 @@ return (
           <div className="form-group">
               <label for="InputEmail1">Email address</label><br/>
               <input type="email" className="form-control-lg" id="InputEmail1" name="email" value={this.state.email} onChange={this.onChange}  />
-              
+               <span className="text-danger">{errors.email } {errors.emailnotfound}</span>
           </div>
           
           <div className="form-group">
               <label for="InputPassword">Password</label><br/>
               <input type="password" className="form-control-lg" id="InputPassword" name="password" value={this.state.password} onChange={this.onChange} />
+             <span className="text-danger">{errors.password } {errors.passwordincorrect}</span>
           </div>
         
          
@@ -86,7 +87,7 @@ Login.propTypes = {
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.error
 });
 export default connect(
   mapStateToProps,

@@ -14,15 +14,17 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
-      errors: {}
+      errors : {}
     };
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(this.props)
     if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
-      });
+      }, () => console.log(this.state.errors));
+
     }
   }
 
@@ -48,7 +50,8 @@ class Register extends Component {
 
     
 render() {
-    const { errors } = this.state;
+   const { errors } = this.state;
+   console.log(this.props)
 return (
       <div className="container-fluid" style={{height: window.innerHeight-100}}>
           <div className="row jumbotron">
@@ -59,20 +62,22 @@ return (
                 <div className="form-group">
                     <label for="InputEmail1">Email address</label><br/>
                     <input type="email" className="form-control-lg" id="InputEmail1" name="email" value={this.state.email} onChange={this.onChange}  />
-                    
+                    {errors.email && <span className="text-danger">{errors.email}</span>}
                 </div>
                 <div className="form-group">
                     <label for="name">Name</label><br/>
                     <input type="input" className="form-control-lg" id="name" name="name" value={this.state.name} onChange={this.onChange}  />
-                    
+                    {errors.name && <span className="text-danger">{errors.name}</span>}
                 </div>
                 <div className="form-group">
                     <label for="InputPassword">Password</label><br/>
                     <input type="password" className="form-control-lg" id="InputPassword" name="password" value={this.state.password} onChange={this.onChange} />
+                    {errors.password && <span className="text-danger">{errors.password}</span>}
                 </div>
                 <div className="form-group">
                     <label for="InputPassword1">Confirm Password</label><br/>
                     <input type="password" className="form-control-lg" id="InputPassword1" name="password2" value={this.state.password2} onChange={this.onChange} />
+                    {errors.password2 && <span className="text-danger">{errors.password2}</span>}
                 </div>
                
                 <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Register</button>
@@ -92,7 +97,7 @@ Register.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.error
 });
 
 export default connect(
