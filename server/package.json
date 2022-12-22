@@ -19,7 +19,7 @@
     "convert-csv-to-json": "0.0.15",
     "express": "^4.17.1",
     "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.9.9",
     "validator": "^13.0.0"
   }
